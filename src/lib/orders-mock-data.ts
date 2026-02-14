@@ -44,6 +44,7 @@ export interface CoordinatorOrder {
   createdAt: string;
   updatedAt: string;
   deadline: string;
+  modelUrl?: string;
 }
 
 function ago(days: number): string {
@@ -77,6 +78,7 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     createdAt: ago(7),
     updatedAt: ago(1),
     deadline: future(14),
+    modelUrl: "/models/model 1.glb",
   },
   {
     id: "ORD-2026-0002",
@@ -96,6 +98,7 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     createdAt: ago(21),
     updatedAt: ago(2),
     deadline: future(5),
+    modelUrl: "/models/model 2.glb",
   },
   {
     id: "ORD-2026-0003",
@@ -134,6 +137,7 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     createdAt: ago(60),
     updatedAt: ago(10),
     deadline: ago(12),
+    modelUrl: "/models/model 1.glb",
   },
   {
     id: "ORD-2026-0005",

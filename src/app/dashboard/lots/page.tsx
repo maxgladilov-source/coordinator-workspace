@@ -47,6 +47,7 @@ import {
   type LotCheckItem,
 } from "@/lib/lots-mock-data";
 import { usePermissions } from "@/contexts/RoleContext";
+import ModelPreview from "@/components/ModelViewer/ModelPreview";
 import "./lots.css";
 
 const { Text, Title, Paragraph } = Typography;
@@ -431,6 +432,11 @@ function LotDetailPanel({
       <div style={{ padding: "12px 0", borderTop: `1px solid ${token.colorBorderSecondary}` }}>
         <DocumentsSection lot={lot} />
       </div>
+
+      {/* 3D-просмотр — только для материальных лотов с моделью */}
+      {lot.category === "material" && lot.modelUrl && (
+        <ModelPreview modelUrl={lot.modelUrl} />
+      )}
 
       {/* Заметки координатора */}
       {lot.coordinatorNotes && (

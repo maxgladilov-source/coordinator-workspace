@@ -49,6 +49,7 @@ export interface CoordinatorLot {
   updatedAt: string;
   publishedAt: string | null;
   checks: LotCheckItem[];
+  modelUrl?: string;
 }
 
 function ago(days: number): string {
@@ -107,6 +108,7 @@ export const MOCK_LOTS: CoordinatorLot[] = [
     updatedAt: ago(1),
     publishedAt: null,
     checks: REQUIRED_CHECKS.map(c => ({ ...c, result: null, comment: null, checkedAt: null })),
+    modelUrl: "/models/model 1.glb",
   },
   {
     id: "LOT-2026-0002",
@@ -143,6 +145,7 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       comment: i === 6 ? "Обнаружен номер телефона в описании" : null,
       checkedAt: i === 6 ? ago(0) : null,
     })),
+    modelUrl: "/models/model 2.glb",
   },
   {
     id: "LOT-2026-0003",
@@ -214,6 +217,7 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       comment: null,
       checkedAt: ago(3),
     })),
+    modelUrl: "/models/model 1.glb",
   },
   {
     id: "LOT-2026-0005",

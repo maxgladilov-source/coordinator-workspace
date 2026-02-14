@@ -37,6 +37,7 @@ import {
   type OrderStatus,
 } from "@/lib/orders-mock-data";
 import { usePermissions } from "@/contexts/RoleContext";
+import ModelPreview from "@/components/ModelViewer/ModelPreview";
 import "./orders.css";
 
 const { Text, Title, Paragraph } = Typography;
@@ -246,6 +247,11 @@ function OrderDetailPanel({
           <Descriptions.Item label="Валюта">{order.currency}</Descriptions.Item>
         </Descriptions>
       </div>
+
+      {/* 3D-просмотр — для заказов с моделью */}
+      {order.modelUrl && (
+        <ModelPreview modelUrl={order.modelUrl} />
+      )}
 
       {/* Заметки */}
       {order.notes && (
