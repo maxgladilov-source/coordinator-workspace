@@ -32,10 +32,8 @@ export interface CoordinatorOrder {
   lotNumber: string;
   lotTitle: string;
   status: OrderStatus;
-  supplierName: string;
-  supplierCompany: string;
-  customerName: string;
-  customerCompany: string;
+  supplierId: string;
+  customerId: string;
   finalPrice: number;
   currency: string;
   quantity: number;
@@ -66,10 +64,8 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     lotNumber: "LOT-2026-0005",
     lotTitle: "Крепёж высокопрочный — набор М16-М24",
     status: "in_production",
-    supplierName: "Ли Вэй",
-    supplierCompany: "Shanghai MetalParts Co.",
-    customerName: "Волков Сергей",
-    customerCompany: "ООО «СтройМетиз»",
+    supplierId: "SUP-00031",
+    customerId: "CMP-00055",
     finalPrice: 385_000,
     currency: "RUB",
     quantity: 5000,
@@ -86,10 +82,8 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     lotNumber: "LOT-2025-0088",
     lotTitle: "Втулки бронзовые БрАЖ9-4",
     status: "shipped",
-    supplierName: "Чжан Мин",
-    supplierCompany: "Jiangsu Precision Casting",
-    customerName: "Белов Олег",
-    customerCompany: "ООО «ПромЛит»",
+    supplierId: "SUP-00045",
+    customerId: "CMP-00078",
     finalPrice: 520_000,
     currency: "RUB",
     quantity: 400,
@@ -106,10 +100,8 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     lotNumber: "LOT-2025-0072",
     lotTitle: "Пружины тарельчатые DIN 2093",
     status: "dispute",
-    supplierName: "Ван Хао",
-    supplierCompany: "Ningbo Spring Tech",
-    customerName: "Орлов Виктор",
-    customerCompany: "ЗАО «МашСервис»",
+    supplierId: "SUP-00019",
+    customerId: "CMP-00092",
     finalPrice: 190_000,
     currency: "RUB",
     quantity: 2000,
@@ -125,10 +117,8 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     lotNumber: "LOT-2025-0095",
     lotTitle: "Корпус насоса — чугун СЧ25",
     status: "completed",
-    supplierName: "Хуан Цзянь",
-    supplierCompany: "Dalian Heavy Machinery",
-    customerName: "Фёдоров Игорь",
-    customerCompany: "ПАО «НасосЭнерго»",
+    supplierId: "SUP-00008",
+    customerId: "CMP-00064",
     finalPrice: 1_750_000,
     currency: "RUB",
     quantity: 30,
@@ -145,10 +135,8 @@ export const MOCK_ORDERS: CoordinatorOrder[] = [
     lotNumber: "LOT-2025-0101",
     lotTitle: "Шпильки резьбовые М30×300",
     status: "won",
-    supplierName: "Чэнь Лян",
-    supplierCompany: "Qingdao Fastener Group",
-    customerName: "Кузнецов Артём",
-    customerCompany: "ООО «ЭнергоМонтаж»",
+    supplierId: "SUP-00052",
+    customerId: "CMP-00103",
     finalPrice: 275_000,
     currency: "RUB",
     quantity: 800,

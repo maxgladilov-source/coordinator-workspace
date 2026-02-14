@@ -39,8 +39,6 @@ export interface CoordinatorLot {
   deliveryDeadline: string;
   technicalSpecs: Record<string, string>;
   status: LotStatus;
-  customerName: string;
-  customerCompany: string;
   customerId: string;
   coordinatorNotes: string;
   rejectionReason: string;
@@ -98,8 +96,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "Масса детали": "1.2 кг",
     },
     status: "pending_review",
-    customerName: "Иванов Алексей",
-    customerCompany: "ООО «Механика Плюс»",
     customerId: "CMP-00012",
     coordinatorNotes: "",
     rejectionReason: "",
@@ -130,8 +126,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "Диаметр": "60 мм",
     },
     status: "pending_review",
-    customerName: "Петрова Мария",
-    customerCompany: "АО «Уралтехмаш»",
     customerId: "CMP-00024",
     coordinatorNotes: "Обнаружен телефон в описании — нарушение правил",
     rejectionReason: "",
@@ -167,8 +161,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "Комплектация": "Фланец + прокладка + крепёж",
     },
     status: "clarification",
-    customerName: "Сидоров Дмитрий",
-    customerCompany: "ПАО «Нефтемаш»",
     customerId: "CMP-00037",
     coordinatorNotes: "Запросил уточнение по типу прокладок — паронит или ПТФЭ?",
     rejectionReason: "",
@@ -202,8 +194,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "ТО": "Цементация 0.8-1.2 мм, HRC 58-62",
     },
     status: "approved",
-    customerName: "Козлов Андрей",
-    customerCompany: "ООО «СибМашДеталь»",
     customerId: "CMP-00041",
     coordinatorNotes: "Все проверки пройдены, качественное описание",
     rejectionReason: "",
@@ -238,8 +228,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "Покрытие": "Горячее цинкование",
     },
     status: "published",
-    customerName: "Волков Сергей",
-    customerCompany: "ООО «СтройМетиз»",
     customerId: "CMP-00055",
     coordinatorNotes: "",
     rejectionReason: "",
@@ -273,8 +261,6 @@ export const MOCK_LOTS: CoordinatorLot[] = [
       "ТО": "Нормализация",
     },
     status: "rejected",
-    customerName: "Жуков Павел",
-    customerCompany: "ИП Жуков П.А.",
     customerId: "CMP-00063",
     coordinatorNotes: "Контактный email в описании, заказчик отказался убрать",
     rejectionReason: "Нарушение правил площадки: контактная информация в описании лота. Повторное нарушение.",

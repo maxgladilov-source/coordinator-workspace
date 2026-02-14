@@ -182,7 +182,7 @@ export default function DashboardPage() {
                       {lot.contactViolations > 0 && <Tag color="red"><StopOutlined /> Контакт</Tag>}
                     </div>
                     <Text ellipsis style={{ display: "block", fontSize: 13 }}>{lot.title}</Text>
-                    <Text type="secondary" style={{ fontSize: 12 }}>{lot.customerCompany}</Text>
+                    <Text type="secondary" style={{ fontSize: 12 }}>Заказчик: {lot.customerId}</Text>
                   </div>
                   <div style={{ flexShrink: 0, textAlign: "right", marginLeft: 12 }}>
                     <Text style={{ fontSize: 12, color: "#8c8c8c" }}>{formatDate(lot.updatedAt)}</Text>
@@ -207,7 +207,7 @@ export default function DashboardPage() {
                       <Tag color={cfg.color}>{cfg.label}</Tag>
                     </div>
                     <Text ellipsis style={{ display: "block", fontSize: 13 }}>{order.lotTitle}</Text>
-                    <Text type="secondary" style={{ fontSize: 12 }}>{order.supplierCompany}</Text>
+                    <Text type="secondary" style={{ fontSize: 12 }}>Поставщик: {order.supplierId}</Text>
                   </div>
                   <div style={{ flexShrink: 0, textAlign: "right" }}>
                     <Text style={{ fontSize: 13, fontWeight: 600, color: days < 0 ? "#f5222d" : days <= 5 ? "#fa8c16" : "#595959" }}>

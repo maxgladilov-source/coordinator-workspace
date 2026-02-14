@@ -32,7 +32,7 @@ export interface LotReviewProps {
   description: string;
   lotNumber: string;
   lotTitle: string;
-  customerCompany: string;
+  customerId: string;
   category: string;
   priority: "urgent" | "high" | "normal" | "low";
   checksRemaining: number;
@@ -44,8 +44,8 @@ export interface OrderEventProps {
   description: string;
   orderId: string;
   lotTitle: string;
-  supplierCompany: string;
-  customerCompany: string;
+  supplierId: string;
+  customerId: string;
   milestone: string;
   finalPrice: string;
   status: string;
@@ -101,7 +101,7 @@ export const calendarEvents: EventInput[] = [
       description: "Срочная проверка технических характеристик. Заказчик ожидает публикацию до конца дня.",
       lotNumber: "LOT-2024-0047",
       lotTitle: "Подшипники SKF 6205-2RS — 500 шт.",
-      customerCompany: "ПАО «Уралмаш»",
+      customerId: "CMP-00012",
       category: "Подшипники",
       priority: "urgent",
       checksRemaining: 3,
@@ -118,8 +118,8 @@ export const calendarEvents: EventInput[] = [
       description: "Крайний срок доставки фрезерованных корпусов. Проверить статус отгрузки у поставщика.",
       orderId: "ORD-0891",
       lotTitle: "Корпуса из алюминия 6061-T6",
-      supplierCompany: "ООО «ТехноПром»",
-      customerCompany: "ПАО «Уралмаш»",
+      supplierId: "SUP-00031",
+      customerId: "CMP-00012",
       milestone: "Доставка",
       finalPrice: "487 500 ₽",
       status: "Отгружен",
@@ -138,7 +138,7 @@ export const calendarEvents: EventInput[] = [
       disputeId: "DSP-0012",
       orderId: "ORD-0823",
       disputeType: "Качество",
-      initiator: "ПАО «Сибирский механический завод»",
+      initiator: "CMP-00045",
       priority: "high",
       deadline: d(8, 18, 0),
     } satisfies DisputeProps,
@@ -177,7 +177,7 @@ export const calendarEvents: EventInput[] = [
       type: "document",
       description: "Подписание акта приёмки работ по заказу. Документ должен быть загружен в систему.",
       documentType: "Акт приёмки выполненных работ",
-      requiredBy: "Заказчик — ООО «ВолгаМеханика»",
+      requiredBy: "Заказчик — CMP-00103",
       relatedOrder: "ORD-0855",
       status: "pending",
     } satisfies DocumentProps,
@@ -193,7 +193,7 @@ export const calendarEvents: EventInput[] = [
       description: "Проверка спецификации и чертежей. Обнаружены контактные данные в описании — требуется фильтрация.",
       lotNumber: "LOT-2024-0051",
       lotTitle: "Штамповка кронштейнов из стали 09Г2С — 2000 шт.",
-      customerCompany: "АО «Промтехснаб»",
+      customerId: "CMP-00037",
       category: "Штамповка",
       priority: "normal",
       checksRemaining: 5,
@@ -231,8 +231,8 @@ export const calendarEvents: EventInput[] = [
       description: "Дедлайн для подтверждения заказа поставщиком. Если не подтвердит — передать следующему.",
       orderId: "ORD-0902",
       lotTitle: "3D-печать прототипов SLS — 30 шт.",
-      supplierCompany: "ООО «АддитивПро»",
-      customerCompany: "АО «НИИМаш»",
+      supplierId: "SUP-00052",
+      customerId: "CMP-00078",
       milestone: "Подтверждение",
       finalPrice: "156 000 ₽",
       status: "Ожидает подтверждения",
@@ -250,7 +250,7 @@ export const calendarEvents: EventInput[] = [
       disputeId: "DSP-0009",
       orderId: "ORD-0798",
       disputeType: "Сроки доставки",
-      initiator: "АО «НИИМаш»",
+      initiator: "CMP-00078",
       priority: "critical",
       deadline: d(17, 18, 0),
     } satisfies DisputeProps,
@@ -266,7 +266,7 @@ export const calendarEvents: EventInput[] = [
       description: "Сложный лот с нестандартными техтребованиями. Привлечь инженера для проверки.",
       lotNumber: "LOT-2024-0058",
       lotTitle: "Литьё корпусов из ABS — 5000 шт.",
-      customerCompany: "ООО «ЭлектроКомплект»",
+      customerId: "CMP-00092",
       category: "Литьё под давлением",
       priority: "high",
       checksRemaining: 7,
@@ -297,8 +297,8 @@ export const calendarEvents: EventInput[] = [
       description: "Плановая дата окончания производства. Связаться с поставщиком для подтверждения и организации отгрузки.",
       orderId: "ORD-0878",
       lotTitle: "Токарная обработка валов — 200 шт.",
-      supplierCompany: "ООО «МеталлРесурс»",
-      customerCompany: "ПАО «Уралмаш»",
+      supplierId: "SUP-00008",
+      customerId: "CMP-00012",
       milestone: "Завершение производства",
       finalPrice: "890 000 ₽",
       status: "В производстве",
@@ -339,7 +339,7 @@ export const calendarEvents: EventInput[] = [
       description: "Заказчик должен предоставить уточнённые чертежи. Если не предоставит — лот будет отклонён.",
       lotNumber: "LOT-2024-0044",
       lotTitle: "Фрезеровка корпусов редукторов — 100 шт.",
-      customerCompany: "ООО «ВолгаМеханика»",
+      customerId: "CMP-00103",
       category: "Фрезеровка",
       priority: "normal",
       checksRemaining: 2,

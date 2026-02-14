@@ -118,7 +118,7 @@ function OrderCard({
 
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-              <Text type="secondary" style={{ fontSize: 12 }}>{order.supplierCompany}</Text>
+              <Text type="secondary" style={{ fontSize: 12 }}>Поставщик: {order.supplierId}</Text>
             </div>
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <Text type="secondary" style={{ fontSize: 12 }}>{formatDate(order.deadline)}</Text>
@@ -211,21 +211,12 @@ function OrderDetailPanel({
         </div>
       )}
 
-      {/* Поставщик */}
+      {/* Участники */}
       <div style={{ padding: "12px 0", borderTop: `1px solid ${token.colorBorderSecondary}` }}>
-        <Text strong style={{ fontSize: 13, display: "block", marginBottom: 8 }}>Поставщик</Text>
+        <Text strong style={{ fontSize: 13, display: "block", marginBottom: 8 }}>Участники</Text>
         <Descriptions column={2} size="small" colon={false}>
-          <Descriptions.Item label="Контактное лицо">{order.supplierName}</Descriptions.Item>
-          <Descriptions.Item label="Компания">{order.supplierCompany}</Descriptions.Item>
-        </Descriptions>
-      </div>
-
-      {/* Заказчик */}
-      <div style={{ padding: "12px 0", borderTop: `1px solid ${token.colorBorderSecondary}` }}>
-        <Text strong style={{ fontSize: 13, display: "block", marginBottom: 8 }}>Заказчик</Text>
-        <Descriptions column={2} size="small" colon={false}>
-          <Descriptions.Item label="Контактное лицо">{order.customerName}</Descriptions.Item>
-          <Descriptions.Item label="Компания">{order.customerCompany}</Descriptions.Item>
+          <Descriptions.Item label="ID поставщика">{order.supplierId}</Descriptions.Item>
+          <Descriptions.Item label="ID заказчика">{order.customerId}</Descriptions.Item>
         </Descriptions>
       </div>
 
@@ -373,7 +364,7 @@ export default function OrdersPage() {
   const filteredOrders = useMemo(() => {
     return orders.filter(order => {
       if (statusFilter !== "all" && order.status !== statusFilter) return false;
-      if (searchText && !order.lotTitle.toLowerCase().includes(searchText.toLowerCase()) && !order.id.toLowerCase().includes(searchText.toLowerCase()) && !order.supplierCompany.toLowerCase().includes(searchText.toLowerCase())) return false;
+      if (searchText && !order.lotTitle.toLowerCase().includes(searchText.toLowerCase()) && !order.id.toLowerCase().includes(searchText.toLowerCase()) && !order.supplierId.toLowerCase().includes(searchText.toLowerCase())) return false;
       return true;
     });
   }, [orders, statusFilter, searchText]);

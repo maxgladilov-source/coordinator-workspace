@@ -106,7 +106,7 @@ function LotReviewDetails({ props }: { props: LotReviewProps }) {
         </Descriptions.Item>
         <Descriptions.Item label="Название" span={2}>{props.lotTitle}</Descriptions.Item>
         <Descriptions.Item label={<><UserOutlined /> Заказчик</>}>
-          {props.customerCompany}
+          {props.customerId}
         </Descriptions.Item>
         <Descriptions.Item label="Категория">{props.category}</Descriptions.Item>
         <Descriptions.Item label="Статус">
@@ -138,8 +138,8 @@ function OrderDetails({ props }: { props: OrderEventProps }) {
           <Tag color={PRIORITY_COLORS[props.priority]}>{props.priority.toUpperCase()}</Tag>
         </Descriptions.Item>
         <Descriptions.Item label="Лот" span={2}>{props.lotTitle}</Descriptions.Item>
-        <Descriptions.Item label="Поставщик">{props.supplierCompany}</Descriptions.Item>
-        <Descriptions.Item label="Заказчик">{props.customerCompany}</Descriptions.Item>
+        <Descriptions.Item label="ID поставщика">{props.supplierId}</Descriptions.Item>
+        <Descriptions.Item label="ID заказчика">{props.customerId}</Descriptions.Item>
         <Descriptions.Item label="Этап">
           <Badge status="processing" text={props.milestone} />
         </Descriptions.Item>

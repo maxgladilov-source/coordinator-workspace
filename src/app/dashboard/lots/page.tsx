@@ -194,7 +194,7 @@ function LotCard({
           </div>
 
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 12 }}>
-            <Text type="secondary" style={{ fontSize: 12 }}>{lot.customerCompany}</Text>
+            <Text type="secondary" style={{ fontSize: 12 }}>Заказчик: {lot.customerId}</Text>
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <Text type="secondary" style={{ fontSize: 12 }}>{formatDate(lot.deliveryDeadline)}</Text>
               <Tag color={deadline.urgent ? "red" : "blue"} style={{ margin: 0, fontSize: 11 }}>
@@ -372,9 +372,7 @@ function LotDetailPanel({
       <div style={{ padding: "12px 0", borderTop: `1px solid ${token.colorBorderSecondary}` }}>
         <Text strong style={{ fontSize: 13, display: "block", marginBottom: 8 }}>Заказчик</Text>
         <Descriptions column={2} size="small" colon={false}>
-          <Descriptions.Item label="Контактное лицо">{lot.customerName}</Descriptions.Item>
-          <Descriptions.Item label="Компания">{lot.customerCompany}</Descriptions.Item>
-          <Descriptions.Item label="ID">{lot.customerId}</Descriptions.Item>
+          <Descriptions.Item label="ID заказчика">{lot.customerId}</Descriptions.Item>
         </Descriptions>
       </div>
 
@@ -628,7 +626,7 @@ export default function LotsPage() {
   const filteredLots = useMemo(() => {
     return lots.filter(lot => {
       if (statusFilter !== "all" && lot.status !== statusFilter) return false;
-      if (searchText && !lot.title.toLowerCase().includes(searchText.toLowerCase()) && !lot.number.toLowerCase().includes(searchText.toLowerCase()) && !lot.customerCompany.toLowerCase().includes(searchText.toLowerCase())) return false;
+      if (searchText && !lot.title.toLowerCase().includes(searchText.toLowerCase()) && !lot.number.toLowerCase().includes(searchText.toLowerCase()) && !lot.customerId.toLowerCase().includes(searchText.toLowerCase())) return false;
       return true;
     });
   }, [lots, statusFilter, searchText]);
