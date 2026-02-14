@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #1e40af;
+  --primary-dark: #1e3a8a;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --surface: #f9fafb;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --muted: #94a3b8;
+  --border: #334155;
+  --surface: #1e293b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Hide header title text on narrow screens */
+@media (max-width: 1500px) {
+  .header-title-text {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header-logo {
+    display: none;
+  }
+}
+
+.ant-pro-global-header-header-actions-item:has(.header-info) {
+  cursor: default;
+}
+.ant-pro-global-header-header-actions-item:has(.header-info):hover {
+  background: transparent !important;
+}
