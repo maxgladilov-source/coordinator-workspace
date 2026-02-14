@@ -24,6 +24,7 @@ import {
   SafetyCertificateOutlined,
 } from "@ant-design/icons";
 import ruRU from "antd/locale/ru_RU";
+import { RoleProvider } from "@/contexts/RoleContext";
 
 function HeaderClock() {
   const [now, setNow] = useState<Date | null>(null);
@@ -55,6 +56,7 @@ export default function DashboardLayout({
   const [mounted, setMounted] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [signOutOpen, setSignOutOpen] = useState(false);
+  const [demoRole, setDemoRole] = useState<"admin" | "user">("admin");
 
   useEffect(() => {
     setMounted(true);
@@ -191,6 +193,37 @@ export default function DashboardLayout({
               }} />
               <span style={{ color: "#52c41a", fontWeight: 500 }}>Демо</span>
             </span>,
+            <span key="demo-role" style={{ display: "inline-flex", alignItems: "center", gap: 2, fontSize: 14 }}>
+              <button
+                onClick={() => setDemoRole("admin")}
+                style={{
+                  padding: 0,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  border: "none",
+                  background: "none",
+                  color: demoRole === "admin" ? "#1677ff" : (dark ? "#555" : "#bbb"),
+                }}
+              >
+                Admin
+              </button>
+              <span style={{ color: dark ? "#555" : "#bbb" }}>/</span>
+              <button
+                onClick={() => setDemoRole("user")}
+                style={{
+                  padding: 0,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  border: "none",
+                  background: "none",
+                  color: demoRole === "user" ? "#1677ff" : (dark ? "#555" : "#bbb"),
+                }}
+              >
+                User
+              </button>
+            </span>,
             <HeaderClock key="clock" />,
             <Tag key="level" icon={<SafetyCertificateOutlined />} color="geekblue">
               Координатор
@@ -240,7 +273,9 @@ export default function DashboardLayout({
             },
           }}
         >
-          {children}
+          <RoleProvider role={demoRole}>
+            {children}
+          </RoleProvider>
           <Modal
             title="Выход"
             open={signOutOpen}

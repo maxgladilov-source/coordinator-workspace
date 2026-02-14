@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { MOCK_ORDERS, ORDER_STATUS_CONFIG, ORDER_STEPS } from "@/lib/orders-mock-data";
 import type { CoordinatorOrder, OrderStatus } from "@/lib/orders-mock-data";
+import { usePermissions } from "@/contexts/RoleContext";
 
 const { Text, Title } = Typography;
 
@@ -25,6 +26,7 @@ function daysUntil(d: string) {
 }
 
 export default function OrdersPage() {
+  const { can } = usePermissions();
   const [orders, setOrders] = useState(MOCK_ORDERS);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [messageApi, contextHolder] = message.useMessage();
@@ -137,19 +139,21 @@ export default function OrdersPage() {
               )}
 
               <div style={{ display: "flex", gap: 8 }}>
-                {selected.status !== "completed" && selected.status !== "dispute" && currentStep < ORDER_STEPS.length - 1 && (
+                {can("changeOrderStatus") && selected.status !== "completed" && selected.status !== "dispute" && currentStep < ORDER_STEPS.length - 1 && (
                   <Button type="primary" onClick={() => handleNextStep(selected.id)}>
                     Перевести в «{ORDER_STEPS[currentStep + 1]?.label}»
                   </Button>
                 )}
-                {selected.status !== "completed" && selected.status !== "dispute" && (
+                {can("openDispute") && selected.status !== "completed" && selected.status !== "dispute" && (
                   <Button danger onClick={() => handleDispute(selected.id)}>
                     Открыть спор
                   </Button>
                 )}
-                <Button icon={<MessageOutlined />}>
-                  Написать сообщение
-                </Button>
+                {can("sendMessage") && (
+                  <Button icon={<MessageOutlined />}>
+                    Написать сообщение
+                  </Button>
+                )}
               </div>
             </Card>
           ) : (

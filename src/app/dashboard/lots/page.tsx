@@ -14,6 +14,7 @@ import {
 } from "@ant-design/icons";
 import { MOCK_LOTS, LOT_STATUS_CONFIG, REQUIRED_CHECKS } from "@/lib/lots-mock-data";
 import type { CoordinatorLot, LotStatus, LotCheckItem } from "@/lib/lots-mock-data";
+import { usePermissions } from "@/contexts/RoleContext";
 
 const { Text, Title } = Typography;
 
@@ -28,6 +29,7 @@ function formatDate(d: string) {
 }
 
 export default function LotsPage() {
+  const { can } = usePermissions();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<LotStatus | "">("");
   const [search, setSearch] = useState("");
@@ -204,7 +206,7 @@ export default function LotsPage() {
                       </span>
                       <Text style={{ flex: 1, fontSize: 13 }}>{check.label}</Text>
                       {check.comment && <Text type="secondary" style={{ fontSize: 12 }}>{check.comment}</Text>}
-                      {(selected.status === "pending_review" || selected.status === "clarification") && (
+                      {can("checkLot") && (selected.status === "pending_review" || selected.status === "clarification") && (
                         <div style={{ display: "flex", gap: 4 }}>
                           <Button size="small" type="primary" ghost onClick={() => handleCheck(selected.id, check.name, "pass")}>OK</Button>
                           <Button size="small" danger ghost onClick={() => handleCheck(selected.id, check.name, "fail")}>Fail</Button>
@@ -230,7 +232,7 @@ export default function LotsPage() {
               )}
 
               {/* Действия */}
-              {(selected.status === "pending_review" || selected.status === "clarification") && (
+              {(can("approveLot") || can("rejectLot")) && (selected.status === "pending_review" || selected.status === "clarification") && (
                 <Card size="small" title="Действия" style={{ marginBottom: 20 }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                     <div style={{ display: "flex", gap: 8 }}>
@@ -243,14 +245,18 @@ export default function LotsPage() {
                       <Button type="default" onClick={() => handleClarify(selected.id)}>Запросить уточнение</Button>
                     </div>
                     <div style={{ display: "flex", gap: 8 }}>
-                      <Button type="primary" onClick={() => handleApprove(selected.id)}>Одобрить</Button>
-                      <Button danger onClick={() => setShowRejectModal(true)}>Отклонить</Button>
+                      {can("approveLot") && (
+                        <Button type="primary" onClick={() => handleApprove(selected.id)}>Одобрить</Button>
+                      )}
+                      {can("rejectLot") && (
+                        <Button danger onClick={() => setShowRejectModal(true)}>Отклонить</Button>
+                      )}
                     </div>
                   </div>
                 </Card>
               )}
 
-              {selected.status === "approved" && (
+              {can("publishLot") && selected.status === "approved" && (
                 <Button type="primary" size="large" block onClick={() => handlePublish(selected.id)}>
                   Опубликовать на LotMarket
                 </Button>

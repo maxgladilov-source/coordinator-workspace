@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import { MOCK_CONVERSATIONS, CHANNEL_CONFIG, CONV_STATUS_CONFIG } from "@/lib/messages-mock-data";
 import type { Conversation, Message } from "@/lib/messages-mock-data";
+import { usePermissions } from "@/contexts/RoleContext";
 
 const { Text } = Typography;
 
@@ -36,6 +37,7 @@ const ROLE_LABEL: Record<string, string> = {
 };
 
 export default function MessagesPage() {
+  const { can } = usePermissions();
   const [conversations, setConversations] = useState(MOCK_CONVERSATIONS);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [newMessage, setNewMessage] = useState("");
@@ -136,7 +138,7 @@ export default function MessagesPage() {
                       </Tag>
                     )}
                     <Text style={{ fontSize: 14 }}>{msg.text}</Text>
-                    {msg.originalText && msg.fromRole !== "coordinator" && (
+                    {can("viewFilteredOriginals") && msg.originalText && msg.fromRole !== "coordinator" && (
                       <details style={{ marginTop: 6 }}>
                         <summary style={{ fontSize: 11, color: "#fa8c16", cursor: "pointer" }}>
                           <EyeOutlined /> Показать оригинал
@@ -151,18 +153,24 @@ export default function MessagesPage() {
               </div>
 
               {/* Input */}
-              <div style={{ padding: "12px 20px", borderTop: "1px solid #f0f0f0", display: "flex", gap: 8 }}>
-                <Input
-                  value={newMessage}
-                  onChange={e => setNewMessage(e.target.value)}
-                  onPressEnter={handleSend}
-                  placeholder="Написать сообщение..."
-                  style={{ flex: 1 }}
-                />
-                <Button type="primary" icon={<SendOutlined />} onClick={handleSend}>
-                  Отправить
-                </Button>
-              </div>
+              {can("sendMessage") ? (
+                <div style={{ padding: "12px 20px", borderTop: "1px solid #f0f0f0", display: "flex", gap: 8 }}>
+                  <Input
+                    value={newMessage}
+                    onChange={e => setNewMessage(e.target.value)}
+                    onPressEnter={handleSend}
+                    placeholder="Написать сообщение..."
+                    style={{ flex: 1 }}
+                  />
+                  <Button type="primary" icon={<SendOutlined />} onClick={handleSend}>
+                    Отправить
+                  </Button>
+                </div>
+              ) : (
+                <div style={{ padding: "12px 20px", borderTop: "1px solid #f0f0f0", textAlign: "center" }}>
+                  <Text type="secondary">Только просмотр — отправка сообщений недоступна</Text>
+                </div>
+              )}
             </>
           ) : (
             <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#8c8c8c" }}>
