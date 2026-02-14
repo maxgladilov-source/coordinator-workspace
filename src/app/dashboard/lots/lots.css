@@ -1,0 +1,158 @@
+/* Lot list scrollbar + snap scroll */
+.lot-list {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.lot-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lot-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lot-list::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+
+.lot-list::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+/* Lot card badge */
+.lot-card-badge {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.lot-card-selected .lot-card-badge {
+  background: transparent;
+}
+
+/* Lot card */
+.lot-card {
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lot-card:hover {
+  border-color: #4096ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.12);
+}
+
+.lot-card-selected,
+.lot-card-selected:hover {
+  border-color: #fa8c16;
+  box-shadow: 0 0 0 2px rgba(250, 140, 22, 0.2);
+  background-color: #f0f0f0 !important;
+}
+
+.lot-card-selected .ant-card-body,
+.lot-card-selected:hover .ant-card-body {
+  background-color: #f0f0f0 !important;
+}
+
+/* Status-based card variants */
+.lot-card-violation {
+  border-color: #f5222d;
+  background: #fff2f0;
+}
+
+.lot-card-violation .ant-card-body {
+  background: #fff2f0;
+}
+
+.lot-card-clarification {
+  border-color: #fa8c16;
+  background: #fff7e6;
+}
+
+.lot-card-clarification .ant-card-body {
+  background: #fff7e6;
+}
+
+.lot-card-approved {
+  border-color: #52c41a;
+  background: #f6ffed;
+}
+
+.lot-card-approved .ant-card-body {
+  background: #f6ffed;
+}
+
+/* Dark theme scrollbar */
+.dark .lot-list {
+  scrollbar-color: #555 transparent;
+}
+
+.dark .lot-list::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark .lot-list::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Dark theme lot card */
+.dark .lot-card-badge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dark .lot-card-selected .lot-card-badge {
+  background: transparent;
+}
+
+.dark .lot-card {
+  border-color: #444;
+}
+
+.dark .lot-card:hover {
+  border-color: #4096ff;
+  box-shadow: 0 0 0 2px rgba(64, 150, 255, 0.25);
+}
+
+.dark .lot-card-selected,
+.dark .lot-card-selected:hover {
+  border-color: #fa8c16;
+  box-shadow: 0 0 0 2px rgba(250, 140, 22, 0.3);
+  background-color: #2a2a2a !important;
+}
+
+.dark .lot-card-selected .ant-card-body,
+.dark .lot-card-selected:hover .ant-card-body {
+  background-color: #2a2a2a !important;
+}
+
+/* Dark: violation */
+.dark .lot-card-violation {
+  border-color: #f5222d;
+  background: rgba(245, 34, 45, 0.1);
+}
+
+.dark .lot-card-violation .ant-card-body {
+  background: rgba(245, 34, 45, 0.1);
+}
+
+/* Dark: clarification */
+.dark .lot-card-clarification {
+  border-color: #d89614;
+  background: rgba(216, 150, 20, 0.1);
+}
+
+.dark .lot-card-clarification .ant-card-body {
+  background: rgba(216, 150, 20, 0.1);
+}
+
+/* Dark: approved */
+.dark .lot-card-approved {
+  border-color: #52c41a;
+  background: rgba(82, 196, 26, 0.1);
+}
+
+.dark .lot-card-approved .ant-card-body {
+  background: rgba(82, 196, 26, 0.1);
+}

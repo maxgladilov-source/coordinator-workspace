@@ -1,0 +1,173 @@
+/* FullCalendar theme overrides — light mode */
+:root {
+  --fc-border-color: #e5e7eb;
+  --fc-button-bg-color: #2563eb;
+  --fc-button-border-color: #2563eb;
+  --fc-button-hover-bg-color: #1d4ed8;
+  --fc-button-hover-border-color: #1d4ed8;
+  --fc-button-active-bg-color: #1e40af;
+  --fc-button-active-border-color: #1e40af;
+  --fc-today-bg-color: rgba(37, 99, 235, 0.06);
+  --fc-page-bg-color: #ffffff;
+  --fc-neutral-bg-color: #f9fafb;
+  --fc-list-event-hover-bg-color: #f3f4f6;
+  --fc-event-border-color: transparent;
+}
+
+/* Dark theme overrides */
+.dark {
+  --fc-border-color: #424242;
+  --fc-button-bg-color: #2563eb;
+  --fc-button-border-color: #2563eb;
+  --fc-button-hover-bg-color: #3b82f6;
+  --fc-button-hover-border-color: #3b82f6;
+  --fc-button-active-bg-color: #1d4ed8;
+  --fc-button-active-border-color: #1d4ed8;
+  --fc-today-bg-color: rgba(37, 99, 235, 0.12);
+  --fc-page-bg-color: #141414;
+  --fc-neutral-bg-color: #1f1f1f;
+  --fc-list-event-hover-bg-color: #2a2a2a;
+  --fc-event-border-color: transparent;
+}
+
+/* Inherit font */
+.fc {
+  font-family: inherit;
+}
+
+/* Toolbar buttons */
+.fc .fc-button {
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.fc .fc-button:focus {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}
+
+/* Toolbar title */
+.fc .fc-toolbar-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Day headers */
+.fc .fc-col-header-cell {
+  padding: 8px 0;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Day numbers */
+.fc .fc-daygrid-day-number {
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+/* Events */
+.fc .fc-event {
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+}
+
+.fc .fc-daygrid-event {
+  margin-top: 2px;
+}
+
+/* Time grid events */
+.fc .fc-timegrid-event {
+  border-radius: 4px;
+  border: none;
+}
+
+/* List view */
+.fc .fc-list {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.fc .fc-list-event td {
+  padding: 8px 12px;
+}
+
+.fc .fc-list-day-cushion {
+  font-weight: 600;
+}
+
+/* Dark theme specific overrides */
+.dark .fc .fc-col-header-cell {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .fc .fc-daygrid-day-number {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .fc .fc-daygrid-day.fc-day-other .fc-daygrid-day-number {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.dark .fc .fc-toolbar-title {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .fc .fc-list-day-cushion {
+  background-color: #1f1f1f;
+}
+
+.dark .fc .fc-list-event:hover td {
+  background-color: #2a2a2a;
+}
+
+.dark .fc th,
+.dark .fc td {
+  border-color: #424242;
+}
+
+.dark .fc .fc-scrollgrid {
+  border-color: #424242;
+}
+
+/* Today highlight — circle on day number only */
+.fc .fc-day-today {
+  background: transparent !important;
+}
+
+.fc .fc-day-today .fc-daygrid-day-number {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.dark .fc .fc-day-today .fc-daygrid-day-number {
+  background: #3b82f6;
+}
+
+/* Non-business days dimming */
+.fc .fc-day-sat,
+.fc .fc-day-sun {
+  opacity: 0.7;
+}
+
+/* More link */
+.fc .fc-daygrid-more-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2563eb;
+}
+
+.dark .fc .fc-daygrid-more-link {
+  color: #60a5fa;
+}

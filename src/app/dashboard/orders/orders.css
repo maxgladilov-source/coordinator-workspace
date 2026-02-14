@@ -1,0 +1,130 @@
+/* Order list scrollbar */
+.order-list {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.order-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.order-list::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 3px;
+}
+
+.order-list::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+/* Order card badge */
+.order-card-badge {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.order-card-selected .order-card-badge {
+  background: transparent;
+}
+
+/* Order card */
+.order-card {
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+  border-color: #4096ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.12);
+}
+
+.order-card-selected,
+.order-card-selected:hover {
+  border-color: #fa8c16;
+  box-shadow: 0 0 0 2px rgba(250, 140, 22, 0.2);
+  background-color: #f0f0f0 !important;
+}
+
+.order-card-selected .ant-card-body,
+.order-card-selected:hover .ant-card-body {
+  background-color: #f0f0f0 !important;
+}
+
+/* Dispute state */
+.order-card-dispute {
+  border-color: #f5222d;
+  background: #fff2f0;
+}
+
+.order-card-dispute .ant-card-body {
+  background: #fff2f0;
+}
+
+/* Completed state */
+.order-card-completed {
+  opacity: 0.7;
+}
+
+/* Dark theme scrollbar */
+.dark .order-list {
+  scrollbar-color: #555 transparent;
+}
+
+.dark .order-list::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark .order-list::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Dark theme order card */
+.dark .order-card-badge {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dark .order-card-selected .order-card-badge {
+  background: transparent;
+}
+
+.dark .order-card {
+  border-color: #444;
+}
+
+.dark .order-card:hover {
+  border-color: #4096ff;
+  box-shadow: 0 0 0 2px rgba(64, 150, 255, 0.25);
+}
+
+.dark .order-card-selected,
+.dark .order-card-selected:hover {
+  border-color: #fa8c16;
+  box-shadow: 0 0 0 2px rgba(250, 140, 22, 0.3);
+  background-color: #2a2a2a !important;
+}
+
+.dark .order-card-selected .ant-card-body,
+.dark .order-card-selected:hover .ant-card-body {
+  background-color: #2a2a2a !important;
+}
+
+/* Dark: dispute */
+.dark .order-card-dispute {
+  border-color: #f5222d;
+  background: rgba(245, 34, 45, 0.1);
+}
+
+.dark .order-card-dispute .ant-card-body {
+  background: rgba(245, 34, 45, 0.1);
+}
+
+/* Dark: completed */
+.dark .order-card-completed {
+  opacity: 0.7;
+}
